@@ -426,22 +426,22 @@ GO
 
 
 
-use master
-use HMart
+--use master
+--use HMart
 
 
-delete from Users;
-delete from Products;
-delete from Cart;
-delete from Orders;
-delete from OrderItems;
+--delete from Users;
+--delete from Products;
+--delete from Cart;
+--delete from Orders;
+--delete from OrderItems;
 
 
-select * from Users;
-select * from Products;
-select * from Cart;
-select * from Orders;
-select * from OrderItems;
+--select * from Users;
+--select * from Products;
+--select * from Cart;
+--select * from Orders;
+--select * from OrderItems;
 
 
 EXEC sp_rename 'Users.createdOn', 'CreatedOn', 'COLUMN';
@@ -460,43 +460,73 @@ VALUES
 -- Insert into the Products table
 INSERT INTO Products (Name, Manufacturer, UnitPrice, Discount, Quantity, ExpDate, ImageUrl, Status)
 VALUES
-    (N'Nước khoáng Danisa', N'Danisa', 5300, 0.01, 100, '2024-04-18', 'nuoc-khoang-dasani-500ml-202312011640167868_300x300.webp', 1),
-    (N'Nước tinh khiết Aquafina 355ml', N'Aquafina', 4700, 0, 50, '2026-05-03', 'nuoc-tinh-khiet-aquafina-355ml-202310301620257749.wepb', 1),
-	(N'Nước tinh khiết Lama 5 lít', N'Lama', 25000, 0.2, 22, '2026-06-11', 'nuoc-tinh-khiet-lama-5-lit-202312012350111895_300x300.wepb', 1),
-	(N'Trà xanh C2 hương táo 230ml', N'C2', 10000, 0.4, 40, '2026-08-20', 'tra-xanh-c2-huong-tao-230ml-202403141053394570_300x300.wepb', 1),
-	(N'Trà xanh C2 hương chanh 225ml', N'C2', 10000, 0.4, 15, '2026-02-24', 'tra-xanh-c2-huong-chanh-225ml-202306230028314886_300x300.wepb', 1),
-	(N'Nước trái cây Ice vị đào 460ml', N'Ice', 11000, 0.1, 60, '2026-01-29', 'nuoc-trai-cay-ice-vi-dao-490ml-202306251454352502_300x300.wepb', 1),
-	(N'Nước tăng lực Sting hương dâu 330ml', N'Sting', 10500, 0.05, 100, '2026-04-09', 'nuoc-tang-luc-sting-huong-dau-330ml-202212130011449810_300x300.wepb', 1),
-	(N'Nước tăng lực Sting gold 330ml', N'Sting', 10500, 0, 150, '2026-11-22', 'nuoc-tang-luc-sting-gold-320ml-202212130018561828_300x300.wepb', 1),
-	(N'Nước tăng lực Redbull 250ml', N'Redbull', 13500, 0.05, 50, '2026-10-07', 'nuoc-tang-luc-redbull-250ml-202306251420429698_300x300.wepb', 1),
-	(N'Nước tăng lực Monster energy Ultra Paradise', N'Monster', 23000, 0, 60, '2026-12-30', 'nuoc-tang-luc-monster-energy-ultra-paradise-lon-355ml-202306251442035467_300x300.wepb', 1),
-	(N'Nước ngọt Pepsi Cola chai 1.5 lít', N'Pepsi', 20000, 0.2, 100, '2026-07-01', 'nuoc-ngot-pepsi-cola-chai-15-lit-202405131429579954.wepb', 1),
-	(N'Nước ngọt Coca Cola lon 320ml', N'CocaCola', 10000, 0, 200, '2026-05-30', 'nuoc-ngot-coca-cola-lon-320ml-202306241759370763_300x300.wepb', 1),
-	(N'Nước khoáng LaVie 350ml', N'LaVie', 4600, 0, 150, '2026-09-09', 'nuoc-khoang-la-vie-5-lit-202312020022154204_300x300.wepb', 1),
-	(N'Nước khoáng ion Pocari Sweat chai 350ml', N'Pocari Sweat', 10000, 0.1, 130, '2026-03-18', 'nuoc-khoang-i-on-pocari-sweat-chai-350ml-202306251433052813_300x300.wepb', 1),
-	(N'Nước cam ép Twister Tropicana 320ml', N'Twister', 10000, 0, 56, '2026-03-18', 'nuoc-cam-ep-twister-tropicana-320ml-202312261636564180_300x300.wepb', 1),
-	(N'Bia Tiger Bạc lon 330ml', N'Tiger', 19200, 0.05, 88, '2026-02-13', 'bia-tiger-bac-330ml-202308250851259675_300x300.wepb', 1),
-	(N'Bia Sài Gòn Lager lon 330ml', N'Sài Gòn', 12300, 0, 99, '2026-07-23', 'bia-sai-gon-lager-330ml-202307281717220267_300x300.wepb', 1),
-	(N'6 lon nước tăng lực Warrior hương nho 325ml', N'Warrior', 66000, 0.03, 55, '2026-04-05', '6-lon-nuoc-tang-luc-warrior-huong-nho-325ml-202306251439321882_300x300.wepb', 1),
-	(N'6 lon nước tăng lực Warrior hương dâu 325ml', N'Warrior', 65000, 0.03, 60, '2026-10-18', '6-lon-nuoc-tang-luc-warrior-huong-dau-325ml-202306251434391540_300x300.wepb', 1),
-	(N'6 lon bia Tiger Bạc 330ml', N'Tiger', 115200, 0.05, 111, '2026-09-02', '6-lon-bia-tiger-bac-330ml-202308250851063935_300x300.wepb', 1),
-	(N'6 lon nước tăng lực Sting hương dâu 320ml', N'Sting', 63000, 0.05, 20, '2026-01-15', '6-lon-nuoc-tang-luc-sting-huong-dau-320ml-202306191319508450_300x300.wepb', 1),
-	(N'6 lon nước ngọt Pepsi Coca Sleek 245ml', N'Pepsi', 52000, 0.04, 15, '2026-11-09', '6-lon-nuoc-ngot-pepsi-cola-sleek-245ml-202402011350006420_300x300.wepb', 1),
-	(N'6 lon nước ngọt Coca Cola 320ml', N'CocaCola', 60000, 0.04, 30, '2026-06-28', '6-lon-nuoc-ngot-coca-cola-320ml-202306241759496911_300x300.wepb', 1);
--- Insert into the Cart table 
+    (N'Nước khoáng Danisa', N'Danisa', 5300, 1, 100, '2024-04-18', 'nuoc-khoang-dasani-500ml-202312011640167868_300x300.webp', 1),
+    (N'Nước tinh khiết Aquafina 355ml', N'Aquafina', 4700, 0, 50, '2026-05-03', 'nuoc-tinh-khiet-aquafina-355ml-202310301620257749.webp', 1),
+	(N'Nước tinh khiết Lama 5 lít', N'Lama', 25000, 20, 22, '2026-06-11', 'nuoc-tinh-khiet-lama-5-lit-202312012350111895_300x300.webp', 1),
+	(N'Trà xanh C2 hương táo 230ml', N'C2', 10000, 40, 40, '2026-08-20', 'tra-xanh-c2-huong-tao-230ml-202403141053394570_300x300.webp', 1),
+	(N'Trà xanh C2 hương chanh 225ml', N'C2', 10000, 40, 15, '2026-02-24', 'tra-xanh-c2-huong-chanh-225ml-202306230028314886_300x300.webp', 1),
+	(N'Nước trái cây Ice vị đào 460ml', N'Ice', 11000, 10, 60, '2026-01-29', 'nuoc-trai-cay-ice-vi-dao-490ml-202306251454352502_300x300.webp', 1),
+	(N'Nước tăng lực Sting hương dâu 330ml', N'Sting', 10500, 5, 100, '2026-04-09', 'nuoc-tang-luc-sting-huong-dau-330ml-202212130011449810_300x300.webp', 1),
+	(N'Nước tăng lực Sting gold 330ml', N'Sting', 10500, 0, 150, '2026-11-22', 'nuoc-tang-luc-sting-gold-320ml-202212130018561828_300x300.webp', 1),
+	(N'Nước tăng lực Redbull 250ml', N'Redbull', 13500, 5, 50, '2026-10-07', 'nuoc-tang-luc-redbull-250ml-202306251420429698_300x300.webp', 1),
+	(N'Nước tăng lực Monster energy Ultra Paradise', N'Monster', 23000, 0, 60, '2026-12-30', 'nuoc-tang-luc-monster-energy-ultra-paradise-lon-355ml-202306251442035467_300x300.webp', 1),
+	(N'Nước ngọt Pepsi Cola chai 1.5 lít', N'Pepsi', 20000, 20, 100, '2026-07-01', 'nuoc-ngot-pepsi-cola-chai-15-lit-202405131429579954.webp', 1),
+	(N'Nước ngọt Coca Cola lon 320ml', N'CocaCola', 10000, 0, 200, '2026-05-30', 'nuoc-ngot-coca-cola-lon-320ml-202306241759370763_300x300.webp', 1),
+	(N'Nước khoáng LaVie 350ml', N'LaVie', 4600, 0, 150, '2026-09-09', 'nuoc-khoang-la-vie-5-lit-202312020022154204_300x300.webp', 1),
+	(N'Nước khoáng ion Pocari Sweat chai 350ml', N'Pocari Sweat', 10000, 1, 130, '2026-03-18', 'nuoc-khoang-i-on-pocari-sweat-chai-350ml-202306251433052813_300x300.webp', 1),
+	(N'Nước cam ép Twister Tropicana 320ml', N'Twister', 10000, 0, 56, '2026-03-18', 'nuoc-cam-ep-twister-tropicana-320ml-202312261636564180_300x300.webp', 1),
+	(N'Bia Tiger Bạc lon 330ml', N'Tiger', 19200, 5, 88, '2026-02-13', 'bia-tiger-bac-330ml-202308250851259675_300x300.webp', 1),
+	(N'Bia Sài Gòn Lager lon 330ml', N'Sài Gòn', 12300, 0, 99, '2026-07-23', 'bia-sai-gon-lager-330ml-202307281717220267_300x300.webp', 1),
+	(N'6 lon nước tăng lực Warrior hương nho 325ml', N'Warrior', 66000, 3, 55, '2026-04-05', '6-lon-nuoc-tang-luc-warrior-huong-nho-325ml-202306251439321882_300x300.webp', 1),
+	(N'6 lon nước tăng lực Warrior hương dâu 325ml', N'Warrior', 65000, 3, 60, '2026-10-18', '6-lon-nuoc-tang-luc-warrior-huong-dau-325ml-202306251434391540_300x300.webp', 1),
+	(N'6 lon bia Tiger Bạc 330ml', N'Tiger', 115200, 5, 111, '2026-09-02', '6-lon-bia-tiger-bac-330ml-202308250851063935_300x300.webp', 1),
+	(N'6 lon nước tăng lực Sting hương dâu 320ml', N'Sting', 63000, 5, 20, '2026-01-15', '6-lon-nuoc-tang-luc-sting-huong-dau-320ml-202306191319508450_300x300.webp', 1),
+	(N'6 lon nước ngọt Pepsi Coca Sleek 245ml', N'Pepsi', 52000, 4, 15, '2026-11-09', '6-lon-nuoc-ngot-pepsi-cola-sleek-245ml-202402011350006420_300x300.webp', 1),
+	(N'6 lon nước ngọt Coca Cola 320ml', N'CocaCola', 60000, 4, 30, '2026-06-28', '6-lon-nuoc-ngot-coca-cola-320ml-202306241759496911_300x300.webp', 1);
+---- Insert into the Cart table 
 INSERT INTO Cart (UserId, ProductID, UnitPrice, Discount, Quantity, TotalPrice)
 VALUES
-    (1, 1, 10.99, 0.50, 2, 19.98),
-    (2, 2, 15.49, 0.25, 3, 43.98);
-
--- Insert into the Orders table
+    	(2, 22, 52000, 4160, 2, 99840),
+		(2,	14,	10000, 200, 2, 19800),
+		(2,	15,	10000, 0, 2, 20000),
+		(2,	16, 19200, 1920,2, 36480),
+		(3,	3, 25000, 20000, 4, 80000);
+---- Insert into the Orders table
 INSERT INTO Orders (UserID, OrderNo, OrderTotal, OrderStatus)
 VALUES
-    (1, 'ORD123456', 19.98, 'Pending'),
-    (2, 'ORD789012', 43.98, 'Processing');
-
--- Insert into the OrderItems table
+	(2, '87B4D2CC-695F-4886-BCCD-5DE4DB9C2DBC', 101000, 'Delivered', '2024-05-30 15:45:46.107'),
+	(2, '285F4E2D-E2F5-4DAF-8983-93F1422DFDA1', 307900, 'Shipped', '2024-05-30 15:46:37.583'),
+	(7, 'C92328CB-A6F7-4F28-B02E-A812E44A3306', 484360, 'Pending', '2024-05-30 15:49:02.847'),
+	(3, '8FB041D0-AE0B-47CA-9681-9286A333978B', 71250, 'Dispatched', '2024-05-30 15:49:53.467'),
+	(4, '83E35CFF-125B-4F84-954D-CD52A615D1B8', 15741, 'Pending', '2024-05-30 15:51:36.603'),
+	(4, 'ECB42968-36D0-4209-886E-0357BA6D0741', 78375, 'Pending', '2024-05-30 15:51:49.117'),
+	(3, '917885D0-DEB2-4730-A636-BE09BB84D220', 192900, 'Delivered', '2024-05-30 15:52:12.963'),
+	(7, '31CCA197-BAA0-45DB-A70C-D5F2066090A3', 50494, 'Dispatched', '2024-05-30 15:57:28.907');
+---- Insert into the OrderItems table
 INSERT INTO OrderItems (OrderID, ProductID, UnitPrice, Discount, Quantity, TotalPrice)
 VALUES
-    (1, 1, 10.99, 0.50, 2, 19.98),
-    (2, 2, 15.49, 0.25, 3, 43.98);
+	(1, 8, 10500, 0, 2, 21000),
+	(1, 3, 25000, 10000, 2, 40000),
+	(1, 5, 10000, 16000, 4, 24000),
+	(1, 11, 20000, 4000, 1, 16000),
+	(2, 15, 10000, 0, 1, 10000),
+	(2, 18, 66000, 1980, 1, 64020),
+	(2, 17, 12300, 0, 2, 24600),
+	(2, 20, 115200, 5760, 1, 109440),
+	(2, 22, 52000, 4160, 2, 99840),
+	(3, 17, 12300, 0, 4, 49200),
+	(3, 18, 66000, 5940, 3, 192060),
+	(3, 19, 65000, 3900, 2, 126100),
+	(3, 10, 23000, 0, 3, 69000),
+	(3, 11, 20000, 12000, 3, 48000),
+	(4, 7, 10500, 1050, 4, 19950),
+	(4, 8, 10500, 0, 3, 31500),
+	(4, 6, 11000, 2200, 2, 19800),
+	(5, 1, 5300, 159, 3, 15741),
+	(6, 7, 10500, 2100, 4, 39900),
+	(6, 9, 13500, 2025, 3, 38475),
+	(7, 8, 10500, 0, 1, 10500),
+	(7, 16, 19200, 3840, 4, 72960),
+	(7, 20, 115200, 5760, 4, 109440),
+	(8, 1, 5300, 106, 5, 10494),
+	(8, 3, 25000, 10000, 2, 40000);
